@@ -1,0 +1,16 @@
+<script>
+    function Person(name, age, city) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+
+        if (typeof this.print !== 'function') {
+            Person.prototype.print = function () {
+                console.log(this.name + ', ' + this.age + ', ' + this.city);
+            }
+        }
+    };
+
+    var p1 = new Person('tomcat', 18, 'GZ');
+    p1.print();
+</script>

@@ -1,0 +1,21 @@
+<script>
+    var personFactory = function (name, age) {
+        var temp = {};
+
+        temp.name = name;
+        temp.age = age;
+
+        temp.printPerson = function () {
+            console.log(this.name + ', ' + this.age);
+        }
+
+        return temp;
+    }
+
+    var person1 = personFactory('tomcat', '18');
+    var person2 = personFactory('hotdag', '80');
+
+    person1.printPerson();
+    person2.printPerson();
+
+</script>

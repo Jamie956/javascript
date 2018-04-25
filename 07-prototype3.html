@@ -1,0 +1,18 @@
+<script>
+    function Person() {
+        this.name = '';
+        this.age = '';
+    };
+
+    Person.prototype.set = function (person) {
+        this.name = person.name;
+        this.age = person.age;
+    };
+    Person.prototype.get = function () {
+        return { name: this.name, age: this.age }
+    };
+
+    var p = new Person();
+    p.set({ name: "tomcat", age: 18 });
+    console.log(p.get())
+</script>

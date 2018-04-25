@@ -1,0 +1,9 @@
+<script>
+    function foo(fn) {
+        console.log('call foo');
+        fn();
+        fn.call(this);
+    }
+
+    foo(function () { console.log('call inner') });		
+</script>
