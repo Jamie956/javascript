@@ -1,20 +1,18 @@
 <script>
-    // Define a constructor function to initialize a new Point object
-    function Point(x, y) { // By convention, constructors start with capitals
-        this.x = x; // this keyword is the new object being initialized
-        this.y = y; // Store function arguments as object properties
-    } // No return is necessary
-    // Use a constructor function with the keyword "new" to create instances
-    var p = new Point(1, 1); // The geometric point (1,1)
-    // Define methods for Point objects by assigning them to the prototype
-    // object associated with the constructor function.
-    Point.prototype.r = function () {
-        return Math.sqrt( // Return the square root of x² + y²
-            this.x * this.x + // This is the Point object on which the method...
-            this.y * this.y // ...is invoked.
-        );
+    function Person() {
+        this.name = '';
+        this.age = '';
     };
-    // Now the Point object p (and all future Point objects) inherits the method r()
-    var result = p.r() // => 1.414...
-    console.log(result)
+
+    Person.prototype.set = function (person) {
+        this.name = person.name;
+        this.age = person.age;
+    };
+    Person.prototype.get = function () {
+        return { name: this.name, age: this.age }
+    };
+
+    var p = new Person();
+    p.set({ name: "tomcat", age: 18 });
+    console.log(p.get())
 </script>

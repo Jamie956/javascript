@@ -1,16 +1,12 @@
 <script>
-    function Person(name, age, city) {
-        this.name = name;
-        this.age = age;
-        this.city = city;
-
-        if (typeof this.print !== 'function') {
-            Person.prototype.print = function () {
-                console.log(this.name + ', ' + this.age + ', ' + this.city);
-            }
-        }
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+    Point.prototype.print = function () {
+        console.log(this.x +', '+ this.y)
     };
-
-    var p1 = new Person('tomcat', 18, 'GZ');
-    p1.print();
+    var p = new Point(1, 2);
+    p.print();
 </script>

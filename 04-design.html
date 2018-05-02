@@ -1,18 +1,13 @@
 <script>
-    var personConstructor = function (name, age) {
-
+    function Person(name, age) {
         this.name = name;
         this.age = age;
-
-        this.printPerson = function () {
+        this.print = function () {
             console.log(this.name + ', ' + this.age);
         }
     }
 
-    var person1 = new personConstructor('tomcat', '18');
-    var person2 = new personConstructor('hotdag', '80');
+    var p = new Person('tomcat', '18');
 
-    person1.printPerson();
-    person2.printPerson();
-
+    p.print();
 </script>

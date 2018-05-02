@@ -1,17 +1,13 @@
 <script>
-    function Person() {
-
-    };
+    function Person() {};
     Person.prototype.name = 'no name';
     Person.prototype.age = 0;
     Person.prototype.city = 'no city';
-
     Person.prototype.print = function () {
         console.log(this.name + ', ' + this.age + ', ' + this.city);
     };
 
     var p1 = new Person();
     p1.name = 'tomcat';
-
     p1.print();
 </script>
