@@ -1,3 +1,4 @@
+//链表
 function LinkedList() {
 	var Node = function (element) { // {1}
 		this.element = element;
