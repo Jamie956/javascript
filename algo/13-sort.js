@@ -100,6 +100,46 @@ function ArrayList() {
     }
     return result; // {13}
   };
+  //快速排序
+  this.quickSort = function () {
+    quick(array, 0, array.length - 1);
+  };
+  var quick = function (array, left, right) {
+    var index; //{1}
+    if (array.length > 1) { //{2}
+      index = partition(array, left, right); //{3}
+      if (left < index - 1) {
+        quick(array, left, index - 1);
+      }
+      if (index < right) { //{6}
+        quick(array, index, right);
+      }
+    }
+  };
+  var partition = function (array, left, right) {
+    var pivot = array[Math.floor((right + left) / 2)], //{8}
+      i = left,
+      j = right;
+    while (i <= j) {
+      while (array[i] < pivot) { //{12}
+        i++;
+      }
+      while (array[j] > pivot) { //{13}
+        j--;
+      }
+      if (i <= j) { //{14}
+        swapQuickStort(array, i, j); //{15}
+        i++;
+        j--;
+      }
+    }
+    return i; //{16}
+  };
+  var swapQuickStort = function (array, index1, index2) {
+    var aux = array[index1];
+    array[index1] = array[index2];
+    array[index2] = aux;
+  };
 }
 
 //生成测试数组
