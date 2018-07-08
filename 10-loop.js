@@ -1,31 +1,10 @@
-//example1 ==========================
-console.log('example1');
-var o = { x: 1, y: 2, z: 3 };
-var a = [], i = 0;
+var str = "";
 
-for (key in o) {//遍历json，
-    key//获取json的key
-    o[key]//获取json的值
+loop1:
+for (var i = 0; i < 5; i++) {
+    if (i === 1) {
+        continue loop1;//不往下执行，进入下一个循环
+    }
+    str = str + i;
 }
-
-
-// for (a[i++] in o);
-// console.log(a)
-// for (i in a) console.log(i);
-
-
-
-//example2 ==========================
-// var str = "";
-// console.log('example2');
-
-// loop1:
-// for (var i = 0; i < 5; i++) {
-//     if (i === 1) {
-//         continue loop1;
-//     }
-//     str = str + i;
-// }
-
-// console.log(str);
-// expected output: "0234"
+str//0234
