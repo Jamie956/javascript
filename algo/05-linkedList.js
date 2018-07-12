@@ -17,8 +17,7 @@ function LinkedList() {
     }
     return items;
   };
-
-  //插入元素
+  //末尾插入元素
   this.append = function(element) {
     var node = new Node(element);
     var current;
@@ -35,7 +34,7 @@ function LinkedList() {
     }
     length++; //更新链表的长度
   };
-
+  //指定位置插入元素
   this.insert = function(position, element) {
     //检查是否越界
     if (position >= 0 && position <= length) {
@@ -63,34 +62,32 @@ function LinkedList() {
       return false; //越界
     }
   };
-
+  //移除指定位置的元素
   this.removeAt = function(position) {
-    //检查越界值
+    //检查是否越界
     if (position > -1 && position < length) {
-      // {1}
-      var current = head, // {2}
-        previous, // {3}
-        index = 0; // {4}
-      //移除第一项
+      var current = head,
+        previous,
+        index = 0;
+      //移除首部
       if (position === 0) {
-        // {5}
         head = current.next;
       } else {
+        //移除指定位置
         while (index++ < position) {
-          // {6}
           previous = current;
-          // {7}
-          current = current.next; // {8}
+          current = current.next;
         }
-        //将previous与current的下一项链接起来:跳过current,从而移除它
+        //将previous与current的下一项链接起来
         previous.next = current.next; // {9}
       }
-      length--; // {10}
+      length--; //更新链表长度
       return current.element;
     } else {
-      return null; // {11}
+      return null; //越界
     }
-  };
+	};
+	
   this.remove = function(element) {
     var index = this.indexOf(element);
     return this.removeAt(index);
@@ -124,7 +121,13 @@ function LinkedList() {
 }
 
 var list = new LinkedList();
-list.append(15);
-list.append(10);
-list.toString();
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+
+list.insert(2, "x");
+
+list.removeAt(3)
+
 console.log(list.toString());
