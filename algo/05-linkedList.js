@@ -102,23 +102,24 @@ function LinkedList() {
   };
   //移除某个元素
   this.remove = function(element) {
-		var index = this.indexOf(element);
+    var index = this.indexOf(element);
     return this.removeAt(index);
-	};
-	
-
-
-
+  };
+  //链表是否为空
   this.isEmpty = function() {
     return length === 0;
   };
+  //链表大小
   this.size = function() {
     return length;
   };
-
-  this.print = function() {};
+  //获取头部
   this.getHead = function() {
     return head;
+  };
+  //打印链表
+  this.print = function() {
+    console.log(this.toString());
   };
 }
 
@@ -131,6 +132,6 @@ list.append(4);
 list.insert(2, "x");
 
 list.removeAt(3);
-list.remove('x')
+list.remove("x");
 
-console.log(list.toString());
+list.print();
