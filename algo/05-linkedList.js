@@ -1,29 +1,40 @@
 //链表
 function LinkedList() {
-	var Node = function (element) { // {1}
+	var Node = function (element) {
 		this.element = element;
 		this.next = null;
 	};
-	var length = 0; // {2}
-	var head = null; // {3}
-	//add ele to end
+	var length = 0;
+	var head = null;
+
+	//链表转字符串
+	this.toString = function () {
+		var current = head;
+		var items = [];
+		while (current) {
+			items.push(current.element)
+			current = current.next;
+		}
+		return items;
+	};
+
+	//插入元素
 	this.append = function (element) {
-		var node = new Node(element), //{1}
-			current; //{2}
-		if (head === null) { //列表中第一个节点 //{3}
+		var node = new Node(element);
+		var current;
+		if (head === null) { //链表首位加入节点
 			head = node;
 		} else {
-			current = head; //{4}
-			//循环列表,直到找到最后一项
-			while (current.next) {
+			current = head;
+			while (current.next) {//遍历链表,直到找到最后一项
 				current = current.next;
 			}
-			//找到最后一项,将其next赋为node,建立链接
-			current.next = node; //{5}
+			//找到最后一项,与node建立链接
+			current.next = node;
 		}
-		length++; //更新列表的长度 //{6}
-
+		length++; //更新链表的长度
 	};
+
 	this.insert = function (position, element) {
 		//检查越界值
 		if (position >= 0 && position <= length) { //{1}
@@ -97,20 +108,7 @@ function LinkedList() {
 	this.size = function () {
 		return length;
 	};
-	this.toString = function () {
-		var current = head, //{1}
-			string = '';
-		//{2}
-		while (current) {
-			//{3}
-			string = current.element; //{4}
-			current = current.next;
-			//{5}
-		}
-		return string;
-		//{6}
 
-	};
 	this.print = function () { };
 	this.getHead = function () {
 		return head;
@@ -120,3 +118,4 @@ function LinkedList() {
 var list = new LinkedList();
 list.append(15);
 list.append(10);
+list.toString()
