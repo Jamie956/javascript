@@ -12,7 +12,6 @@ function HashTable() {
   // 添加或更新元素
   this.put = function(key, value) {
     var position = loseloseHashCode(key);
-    // console.log(position)
     table[position] = value;
   };
   //根据key获取元素的值
