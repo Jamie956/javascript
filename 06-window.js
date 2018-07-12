@@ -8,3 +8,6 @@ window.location = "../";//到上一级路径
 //刷新
 location.reload();
 window.location.replace();
+
+location.href;//获取当前路径
+window.location.pathname
