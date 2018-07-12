@@ -86,27 +86,29 @@ function LinkedList() {
     } else {
       return null; //越界
     }
-	};
-	
-  this.remove = function(element) {
-    var index = this.indexOf(element);
-    return this.removeAt(index);
   };
+  //获取元素的索引
   this.indexOf = function(element) {
-    var current = head, //{1}
-      index = -1;
+    var current = head,
+      index = 0;
     while (current) {
-      //{2}
       if (element === current.element) {
         return index;
-        //{3}
       }
       index++;
-      //{4}
-      current = current.next; //{5}
+      current = current.next;
     }
     return -1;
   };
+  //移除某个元素
+  this.remove = function(element) {
+		var index = this.indexOf(element);
+    return this.removeAt(index);
+	};
+	
+
+
+
   this.isEmpty = function() {
     return length === 0;
   };
@@ -128,6 +130,7 @@ list.append(4);
 
 list.insert(2, "x");
 
-list.removeAt(3)
+list.removeAt(3);
+list.remove('x')
 
 console.log(list.toString());
