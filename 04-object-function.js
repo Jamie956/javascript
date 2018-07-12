@@ -2,7 +2,7 @@ function Person(name, age) {
     this.name = name;
     this.age = age;
     this.print = function () {
-        return this.name + ', ' + this.age
+        console.log(this.name + ', ' + this.age);
     }
 }
 
