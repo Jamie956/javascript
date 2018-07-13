@@ -21,7 +21,6 @@ function Person() {
     this.get = function () {
         return { name: this.name, age: this.age }
     };
-
 };
 
 var p = new Person();
