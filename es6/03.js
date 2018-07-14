@@ -11,13 +11,13 @@ for (let index = 0; index < array.length; index++) {
 v => v + 1;
 v => ({ k: v });
 (x, y) => x + y;
-z => {};
+z => { };
 
 //参数赋值
-function f(x, y = 7) {}
+function f(x, y = 7) { }
 
 //传入剩余参数
-function f(x, y, ...a) {}
+function f(x, y, ...a) { }
 
 //...传参
 var params = ["hello", true, 7];
@@ -36,8 +36,8 @@ obj = { x, y };
 
 //对象内定义函数格式
 obj = {
-  foo(a, b) {},
-  bar(x, y) {}
+  foo(a, b) { },
+  bar(x, y) { }
 };
 
 //数组赋值
@@ -48,14 +48,23 @@ var [a, , b] = list;
 //对象赋值
 var { op, lhs, rhs } = getASTNode();
 
-//  lib/math.js
+//lib/math.js
+//导出函数
 export function sum(x, y) {
   return x + y;
 }
+//导出变量
 export var pi = 3.141593;
-//  someApp.js
+//导入js，全部导入
 import * as math from "lib/math";
-console.log("2π = " + math.sum(math.pi, math.pi));
-//  otherApp.js
+math.sum(math.pi, math.pi)
+//导入js，导入指定函数或变量
 import { sum, pi } from "lib/math";
-console.log("2π = " + sum(pi, pi));
+sum(pi, pi)
+
+//导出一个js
+export * from "lib/math"
+//默认导出
+export default (x) => Math.exp(x)
+//导入默认导出函数，导入指定函数或变量
+import exp, { pi, e } from "lib/mathplusplus"
