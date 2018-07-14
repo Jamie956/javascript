@@ -3,7 +3,7 @@ class Point {
     this.x = x;
     this.y = y;
   }
-  print() {
+  get() {
     return this.x + ' - ' + this.y;
   }
 }
@@ -16,21 +16,24 @@ class ColorPoint extends Point {
     super(x, y); // 调用父类的constructor(x, y)
     this.color = color;
   }
+  get() {
+    return this.color + ' * ' + super.get();// 调用父类的print()
+  }
   print() {
-    return this.color + ' * ' + super.print();// 调用父类的print()
+    console.log(this.color + ' * ' + super.get());// 调用父类的print()
   }
 }
 
 let cp = new ColorPoint(25, 8, 'green');// 初始化构造函数
-
-cp.print();// print()
+cp.get();
+cp.print();
 
 // ======
 class Person {
   constructor() {
     this.x = 3;
   }
-  father(){
+  father() {
     console.log('father');
   }
 }
@@ -42,12 +45,8 @@ class Student extends Person {
   print() {
     console.log(this.x); //调用父类属性
   }
-  son(){
-    console.log('son',this.x);
-  }
 }
 
 let s = new Student();
 s.print();
 s.father();//调用父类方法
-s.son();
