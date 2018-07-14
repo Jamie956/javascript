@@ -68,3 +68,34 @@ export * from "lib/math"
 export default (x) => Math.exp(x)
 //导入默认导出函数，导入指定函数或变量
 import exp, { pi, e } from "lib/mathplusplus"
+
+//set集合
+let s = new Set()
+s.add("hello").add("goodbye")
+s.size
+s.has("hello")
+s.values()
+for (let key of s.values()) { }
+
+//对象结合
+var dest = { quux: 0 }
+var src1 = { foo: 1, bar: 2 }
+var src2 = { foo: 3, baz: 4 }
+Object.assign(dest, src1, src2)
+dest.quux === 0
+dest.foo === 3
+dest.bar === 2
+dest.baz === 4
+
+arr.find(x => x > 3)// 数组元素遍历
+arr.findIndex(x => x > 3)// 数组索引遍历
+
+//proxy
+let target = { foo: "Welcome, foo" }
+let proxy = new Proxy(target, {
+  get(receiver, name) {
+    return name in receiver ? receiver[name] : `Hello, ${name}`
+  }
+})
+proxy.foo === "Welcome, foo"
+proxy.world === "Hello, world"
