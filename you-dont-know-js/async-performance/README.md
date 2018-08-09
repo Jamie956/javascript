@@ -4,3 +4,5 @@ It's very common to conflate the terms "async" and "parallel," but they are actu
 
 JavaScript's single-threading
 
+Concurrency is when two or more "processes" are executing simultaneously over the same period, regardless of whether their individual constituent operations happen in parallel (at the same instant on separate processors or cores) or not. You can think of concurrency then as "process"-level (or task-level) parallelism, as opposed to operation-level parallelism (separate-processor threads).
+
