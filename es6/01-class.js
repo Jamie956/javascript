@@ -1,61 +1,101 @@
-class Point {
-  // constructor 构造方法
-  // 默认返回实例对象（即this）
-  constructor(x, y) {
-    // this 实例对象，x，y实例的属性
-    this.x = x;
-    this.y = y;
+function test01() {
+  class Point {
+    constructor(x, y) {
+      // this 实例对象
+      this.x = x; //x实例的属性
+      this.y = y;
+    }
+    print() {
+      console.log("(" + this.x + ", " + this.y + ")");
+    }
   }
-  print() {
-    console.log("(" + this.x + ", " + this.y + ")");
-  }
+  var p = new Point(2, 3);
+  p.print();
 }
-var p = new Point(2, 3);
-p.print();
-
-//定义匿名class，绑定变量
-let person = new class {//创建匿名class，赋值给变量
-  constructor(name) {
-    this.name = name;
-  }
-  print() {
-    console.log(this.name);
-  }
-}("tom");//相当于变量传入构造函数
-person.print();
-
-// binding this
-class Logger {
-  constructor() {
-    this.printName = this.printName.bind(this);
-    // 函数绑定this，提取函数出来调用时，如果函数使用this且没有进行绑定，就会出现undefined，找不到this
-  }
-  printName(name = "there") {
-    this.print(`Hello ${name}`);//调用了this
-  }
-  print(text) {
-    console.log(text);
-  }
+//===匿名class===
+function test02() {
+  let person = new class {
+    constructor() {}
+    print() {
+      console.log("class no name");
+    }
+  }();
+  person.print();
 }
 
-const logger = new Logger();
-const { printName } = logger;
-printName();
-
-// set & get
-class Teacher {
-  constructor() {
-    this.xcode;
+//===绑定函数===
+function test03() {
+  class Person {
+    constructor() {
+      this.name = "tom";
+      //函数的this与实例的this进行绑定
+      this.print = this.print.bind(this);
+    }
+    print() {
+      console.log(this.name);
+    }
   }
-  get prop() {
-    return this.xcode;
-  }
-  set prop(value) {
-    this.xcode = value;
-  }
+  const p = new Person();
+  const { print } = p;
+  print();
 }
 
-let t = new Teacher();
+//===set & get===
+function test04() {
+  class Person {
+    constructor() {
+      this.name;
+      this.email;
+    }
+    get prop() {
+      return this;
+    }
+    set prop(person) {
+      this.name = person.name;
+      this.email = person.email;
+    }
+  }
 
-t.prop = 'wtf';//调用set
-t.prop//调用get
+  let p = new Person();
+  //set
+  p.prop = {
+    name: "tom",
+    email: "tomeamil"
+  };
+  //get
+  console.log(p.prop);
+}
+
+//===继承====
+function test05() {
+  class Father {
+    constructor(x) {
+      this.x = x;
+    }
+    fatherPrint() {
+      console.log(this.x);
+    }
+  }
+
+  class Son extends Father {
+    constructor(x, y) {
+      super(x); //调用父构造函数
+      this.y = y;
+    }
+    //调用父函数
+    toFatherPrint() {
+      return this.fatherPrint();
+    }
+    //调用父属性x
+    sonPrint() {
+      console.log(this.y + this.x);
+    }
+  }
+
+  const s = new Son("x1", "y1");
+  s.toFatherPrint();
+  s.sonPrint();
+  s.fatherPrint(); //直接调用父类方法
+}
+
+test05();
