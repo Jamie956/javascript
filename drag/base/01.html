@@ -1,4 +1,4 @@
-<!-- 获取元素坐标 -->
+<!-- 获取元素相对父元素坐标 -->
 <div id="myDiv">Click me</div>
 
 <style>
@@ -22,8 +22,7 @@
   window.onload = function () {
     var oMyDiv = document.getElementById('myDiv');
     oMyDiv.onmousedown = function (e) {
-      console.log(this.offsetLeft);
-      console.log(this.offsetTop);
+      console.log(`(${this.offsetLeft}, ${this.offsetTop})`);
     }
   }
 </script>

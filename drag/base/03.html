@@ -1,0 +1,7 @@
+<!-- 鼠标移动，获取document坐标 -->
+<script>
+  document.onmousemove = function (e) {
+    var e = e || window.event;
+    console.log(`(${e.clientX}, ${e.clientY})`)
+  };
+</script>
