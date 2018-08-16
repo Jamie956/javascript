@@ -1,0 +1,29 @@
+<!-- 获取元素坐标 -->
+<div id="myDiv">Click me</div>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  #myDiv {
+    width: 100px;
+    height: 100px;
+    background: #bcbcbc;
+    position: absolute;
+    text-align: center;
+    line-height: 100px;
+    left: 10px;
+    top: 3px;
+  }
+</style>
+
+<script>
+  window.onload = function () {
+    var oMyDiv = document.getElementById('myDiv');
+    oMyDiv.onmousedown = function (e) {
+      console.log(this.offsetLeft);
+      console.log(this.offsetTop);
+    }
+  }
+</script>

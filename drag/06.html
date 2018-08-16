@@ -1,0 +1,10 @@
+<!-- 获取document坐标 -->
+<script>
+  window.onload = function () {
+    document.onmousedown = function (e) {
+      var e = e || window.event;
+      console.log(e.clientX);
+      console.log(e.clientY);
+    }
+  }
+</script>
