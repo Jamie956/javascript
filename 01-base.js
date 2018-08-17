@@ -47,6 +47,8 @@ function test04() {
   console.log(student);
 }
 
+//===obj===
+
 //prototype
 function test06() {
   function Person() {}
@@ -78,4 +80,4 @@ function test07() {
   console.log(rs);
 }
 
-test07();
+test01();
