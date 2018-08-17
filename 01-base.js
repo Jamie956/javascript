@@ -47,4 +47,35 @@ function test04() {
   console.log(student);
 }
 
-test04();
+//prototype
+function test06() {
+  function Person() {}
+  Person.prototype.name = "no name";
+  Person.prototype.print = function() {
+    console.log(this);
+  };
+  var p = new Person();
+  p.name = "tom";
+  p.print();
+}
+
+//函数实例
+function test07() {
+  function Person() {
+    this.name = "";
+    this.age = "";
+    this.set = function(person) {
+      this.name = person.name;
+      this.age = person.age;
+    };
+    this.get = function() {
+      return this;
+    };
+  }
+  var p = new Person();
+  p.set({ name: "tom", age: 18 });
+  var rs = p.get();
+  console.log(rs);
+}
+
+test07();
