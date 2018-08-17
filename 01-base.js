@@ -142,4 +142,67 @@ function test13() {
   console.log(rs);
 }
 
+//短路运算符
+function test14() {
+  var rs;
+  rs = "" && "1"; //第一个false就返回第一个
+  console.log(rs);
+  rs = "" || "2"; //第一个false就返回第二个
+  console.log(rs);
+}
+
+//惰性载入函数
+function test15() {
+  function foo() {
+    if (true) {
+      foo = function() {
+        console.log("aaa");
+      };
+    } else {
+      foo = function() {
+        console.log("bbb");
+      };
+    }
+    return foo();
+  }
+  foo();
+}
+
+//一次性函数
+function test16() {
+  function sca() {
+    console.log("msg");
+    sca = function() {
+      console.log("foo");
+    };
+  }
+  sca();
+  sca();
+}
+
+//通用表单校验
+function test17() {
+  const schema = {
+    first: {
+      required: true
+    },
+    last: {
+      required: true
+    }
+  };
+
+  const validate = (schema, values) => {
+    for (field in schema) {
+      if (schema[field].required) {
+        if (!values[field]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+  console.log(validate(schema, { first: "Bruce" })); // false
+  console.log(validate(schema, { first: "Bruce", last: "Wayne" })); // true
+}
+
 test13();
