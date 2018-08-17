@@ -80,4 +80,66 @@ function test07() {
   console.log(rs);
 }
 
-test01();
+//停止当前循环，进入下一个循环
+function test08() {
+  var str = "";
+  loop1: for (var i = 0; i < 5; i++) {
+    if (i === 1) {
+      continue loop1;
+    }
+    str += i;
+  }
+  console.log(str);
+}
+
+//throw error
+function test09() {
+  function factorial(x) {
+    if (x < 0) throw new Error("x must not be negative");
+    for (var f = 1; x > 1; f *= x, x--);
+    return f;
+  }
+  factorial(-1);
+  factorial(4);
+}
+
+//catch error
+function test10() {
+  function factorial(x) {
+    if (x < 0) throw new Error("x must not be negative");
+    for (var f = 1; x > 1; f *= x, x-- /* empty */);
+    return f;
+  }
+  try {
+    var f = factorial(-1);
+    console.log(f);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+//获取随机数
+function test11() {
+  var rs = Math.random();
+  console.log(rs);
+}
+
+//生成n位随机数
+function test12() {
+  let getRandom = n =>
+    Math.random()
+      .toString()
+      .slice(-n); // 截取倒数n位数
+  var rs = getRandom(6);
+  console.log(rs);
+}
+
+//生成n-m之间的随机数
+function test13() {
+  let randomNum = (n, m) => Math.floor(Math.random() * (m - n) + n);
+  //以值小的n为基准，加上两数差的绝对值乘以0-1之间的随机数，取值区间为[n+|n-m|*0, n+|n-m|*1]，地板取整
+  var rs = randomNum(2, 10);
+  console.log(rs);
+}
+
+test13();
