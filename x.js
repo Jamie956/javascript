@@ -1,10 +1,15 @@
-		//限制用户连续点击
-    function throttle(fun) {
-			if (fun.timeoutId) {
-				clearTimeout(fun.timeoutId);
-			}
-			fun.timeoutId = setTimeout(function () {
-				fun();
-				fun.timeoutId = null;
-			}, 1000);
-		}
+//限制用户连续点击
+function throttle(fun) {
+  if (fun.timeoutId) {
+    clearTimeout(fun.timeoutId);
+  }
+  fun.timeoutId = setTimeout(function() {
+    fun();
+    fun.timeoutId = null;
+  }, 1000);
+}
+
+//导出函数
+module.exports = Deer;
+//导入函数对象
+var Deer = require("./Deer");
