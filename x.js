@@ -15,3 +15,6 @@ function throttle(fun) {
 
 //获取对象items的长度
  Object.keys(items).length;
+
+ //获取对象全部的key
+ Object.keys(items)
