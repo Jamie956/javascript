@@ -27,12 +27,13 @@ function DoublyLinkedList() {
   this.append = function(element) {
     var node = new Node(element);
     var current;
+
+    //情况一,链表为空,头部插入节点
     if (head === null) {
-      //链表首位加入节点
       head = node;
     } else {
+      //情况二,链表不为空,遍历链表,直到找到最后一项
       current = head;
-      //遍历链表,直到找到最后一项
       while (current.next) {
         current = current.next;
       }
@@ -48,24 +49,26 @@ function DoublyLinkedList() {
         current = head,
         previous,
         index = 0;
+
       if (position === 0) {
-        //首位插入
+        //情况一,头部位置插入元素,链表没有头部
         if (!head) {
           head = node;
           tail = node;
         } else {
+          //情况二,头部位置插入元素,链表有头部
           node.next = current;
           current.prev = node;
           head = node;
         }
       } else if (position === length) {
-        //末尾插入
+        //情况三,尾部位置插入元素
         current = tail;
         current.next = node;
         node.prev = current;
         tail = node;
       } else {
-        //其他位置插入
+        //情况三,头部与尾部之间插入元素,遍历链表索引
         while (index++ < position) {
           previous = current;
           current = current.next;
@@ -88,22 +91,24 @@ function DoublyLinkedList() {
       var current = head,
         previous,
         index = 0;
-      //移除第一项
+
       if (position === 0) {
+        //给新头部建立链接
         head = current.next;
-        //如果只有一项,更新tail
+        //情况一,移除头部位置元素,总共只有一个元素
         if (length === 1) {
           tail = null;
         } else {
+          //情况二,移除头部位置元素,总共有多个元素
           head.prev = null;
         }
       } else if (position === length - 1) {
-        //最后一项
+        //情况三,移除尾部位置元素
         current = tail;
         tail = current.prev;
         tail.next = null;
       } else {
-        //其他位置
+        //情况四,头部与尾部之间移除元素,遍历链表索引
         while (index++ < position) {
           previous = current;
           current = current.next;
@@ -159,6 +164,6 @@ list.insert(2, "x");
 
 list.removeAt(1);
 
-list.remove('x');
+list.remove("x");
 
 list.print();
