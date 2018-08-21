@@ -1,34 +1,34 @@
 // 2.线性探查
-this.put = function (key, value) {
-    var position = loseloseHashCode(key); // {1}
-    if (table[position] == undefined) { // {2}
-        table[position] = new ValuePair(key, value); // {3}
+this.put = function(key, value) {
+  //获取key的hash
+  var position = loseloseHashCode(key);
+  //如果hash对应的位置为空,那就把键值对加进去
+  if (table[position] == undefined) {
+    table[position] = new ValuePair(key, value);
+  } else {
+    //如果hash对应的位置不为空,那就把索引加1,直到找到索引对应位置为空的索引
+    var index = ++position;
+    while (table[index] != undefined) {
+      index++;
+    }
+    table[index] = new ValuePair(key, value);
+  }
+};
+
+this.get = function(key) {
+  var position = loseloseHashCode(key);
+  if (table[position] !== undefined) {
+    if (table[position].key === key) {
+      return table[position].value;
     } else {
-        var index = ++position; // {4}
-        while (table[index] != undefined) { // {5}
-            index++; // {6}
-        }
-        table[index] = new ValuePair(key, value); // {7}
+      var index = ++position;
+      while (table[index] === undefined || table[index].key !== key) {
+        index++;
+      }
+      if (table[index].key === key) {
+        return table[index].value;
+      }
     }
+  }
+  return undefined;
 };
-
-this.get = function (key) {
-    var position = loseloseHashCode(key);
-    if (table[position] !== undefined) { //{8}
-        if (table[position].key === key) { //{9}
-            return table[position].value; //{10}
-        } else {
-            var index = ++position;
-            while (table[index] === undefined
-                || table[index].key !== key) { //{11}
-                index++;
-            }
-            if (table[index].key === key) { //{12}
-                return table[index].value; //{13}
-            }
-        }
-    }
-    return undefined; //{14}
-};
-
-

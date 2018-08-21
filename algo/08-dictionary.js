@@ -1,17 +1,20 @@
 //字典，储存键值对的对象
 function Dictionary() {
   var items = {};
+  //是否包含某个key
   this.has = function(key) {
     return key in items;
-  };
-  //添加新元素
-  this.set = function(key, value) {
-    items[key] = value;
   };
   //打印元素
   this.print = function() {
     console.log(this.getItems());
   };
+
+  //添加新元素
+  this.set = function(key, value) {
+    items[key] = value;
+  };
+  
   //根据key移除元素
   this.remove = function(key) {
     if (this.has(key)) {
@@ -20,6 +23,11 @@ function Dictionary() {
     }
     return false;
   };
+  //清空字典
+  this.clear = function() {
+    items = {};
+  };
+
   //根据key获取元素的值
   this.get = function(key) {
     return this.has(key) ? items[key] : undefined;
@@ -45,10 +53,6 @@ function Dictionary() {
   //获取全部元素的key
   this.keys = function() {
     return Object.keys(items);
-  };
-  //清空字典
-  this.clear = function() {
-    items = {};
   };
 }
 
