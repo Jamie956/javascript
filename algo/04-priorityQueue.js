@@ -1,23 +1,31 @@
-//优先队列
+//优先队列,优先度由高到低,值由小到大
 function PriorityQueue() {
   var items = [];
+  //队列元素实体
+  function QueueElement(element, priority) {
+    this.element = element;
+    this.priority = priority;
+  }
   //根据优先度加入元素
   this.enqueue = function(element, priority) {
-    var queueElement = new QueueElement(element, priority);
+    var qe = new QueueElement(element, priority);
+    //情况一,队列为空
     if (this.isEmpty()) {
-      items.push(queueElement); //末尾加入元素
+      items.push(qe); //末尾加入元素
     } else {
       var added = false;
       for (var i = 0; i < items.length; i++) {
-        if (queueElement.priority < items[i].priority) {
-          items.splice(i, 0, queueElement); //插入到指定位置
+        //情况二,插入元素的值在队列的最大值最小值之间
+        if (qe.priority < items[i].priority) {
+          items.splice(i, 0, qe); //插入到指定位置
           added = true;
           break;
         }
       }
+      //情况三,插入元素的值大于最大值
       if (!added) {
         //插入元素优先度排最后
-        items.push(queueElement); //末尾加入元素
+        items.push(qe); //末尾加入元素
       }
     }
   };
@@ -46,11 +54,6 @@ function PriorityQueue() {
   this.print = function() {
     console.log(items);
   };
-  //内部函数
-  function QueueElement(element, priority) {
-    this.element = element;
-    this.priority = priority;
-  }
 }
 
 var priorityQueue = new PriorityQueue();
