@@ -18,7 +18,7 @@ function Set() {
   this.print = function() {
     console.log(this.values());
   };
-  //根据移除某个元素
+  //根据元素的值,移除某个元素
   this.remove = function(value) {
     if (this.has(value)) {
       delete items[value];
@@ -38,7 +38,7 @@ function Set() {
   this.values = function() {
     return Object.keys(items);
   };
-  //并集，包含A, B两个集合
+  //与另一个集合的并集,A与B的全部
   this.union = function(otherSet) {
     var unionSet = new Set();
 
@@ -53,7 +53,7 @@ function Set() {
     }
     return unionSet;
   };
-  //交集，A, B共同的部分
+  //与另一个集合的交集,A与B相同的部分
   this.intersection = function(otherSet) {
     var intersectionSet = new Set();
 
