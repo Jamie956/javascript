@@ -115,12 +115,13 @@ function test06() {
   }
   var mergeSortRec = function(array) {
     var length = array.length;
+    //如果数组长度等于1,直接返回数组
     if (length === 1) {
       return array;
     }
-    var mid = Math.floor(length / 2),
-      left = array.slice(0, mid),
-      right = array.slice(mid, length);
+    var mid = Math.floor(length / 2);
+    var left = array.slice(0, mid);
+    var right = array.slice(mid, length);
     return merge(mergeSortRec(left), mergeSortRec(right));
   };
   var merge = function(left, right) {
@@ -195,4 +196,4 @@ function test07() {
   console.log(array);
 }
 
-test05();
+test06();
