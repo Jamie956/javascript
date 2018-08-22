@@ -1,7 +1,7 @@
 //冒泡排序，O(n^2)
 function test02() {
   var array = [4, 3, 1, 5, 2];
-  //交换
+  //给指定索引的两个元素互换位置
   function swap(index1, index2) {
     var aux = array[index1];
     array[index1] = array[index2];
@@ -26,7 +26,6 @@ function test02() {
 //内循环改进的冒泡排序，O(n^2)
 function test03() {
   var array = [4, 3, 1, 5, 2];
-  //交换
   function swap(index1, index2) {
     var aux = array[index1];
     array[index1] = array[index2];
@@ -48,10 +47,9 @@ function test03() {
   console.log(array);
 }
 
-//选择排序，找最小值放在第一位，再找第二最小值放第二位，O(n^2)
+//选择排序，找最小值放在第一位，再从剩下的元素找最小值放第二位，如此类推,O(n^2)
 function test04() {
   var array = [4, 3, 1, 5, 2];
-  //交换
   function swap(index1, index2) {
     var aux = array[index1];
     array[index1] = array[index2];
@@ -59,8 +57,8 @@ function test04() {
   }
 
   function selectionSort() {
-    var length = array.length,
-      indexMin;
+    var length = array.length;
+    var indexMin;
     for (var i = 0; i < length - 1; i++) {
       indexMin = i;
       for (var j = i; j < length; j++) {
@@ -78,13 +76,13 @@ function test04() {
   console.log(array);
 }
 
-// 插入排序
+//插入排序
 function test05() {
   var array = [4, 3, 1, 5, 2];
   function insertionSort() {
-    var length = array.length,
-      j,
-      temp;
+    var length = array.length;
+    var j;
+    var temp;
     for (var i = 1; i < length; i++) {
       j = i;
       temp = array[i];
@@ -190,4 +188,4 @@ function test07() {
   console.log(array);
 }
 
-test07();
+test04();
