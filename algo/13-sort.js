@@ -59,13 +59,17 @@ function test04() {
   function selectionSort() {
     var length = array.length;
     var indexMin;
+    //每遍历一次找出一个最小值并移到当前循环起始位置,总共遍历 (length - 1) 次即可确定顺序
     for (var i = 0; i < length - 1; i++) {
       indexMin = i;
+      //从当前循环索引开始遍历
       for (var j = i; j < length; j++) {
+        //如果找到一个比较小的数,把它的索引赋值给indexMin
         if (array[indexMin] > array[j]) {
           indexMin = j;
         }
       }
+      //如果找到最小值,indexMin的值就会被修改,将最小值与当前循环索引的元素互换位置
       if (i !== indexMin) {
         swap(i, indexMin);
       }
@@ -83,9 +87,12 @@ function test05() {
     var length = array.length;
     var j;
     var temp;
+    //从索引1开始遍历
     for (var i = 1; i < length; i++) {
+      //将当前循环索引和元素的值暂存起来
       j = i;
       temp = array[i];
+      //暂存索引跟前一个索引元素比较,索引必须大于0,获取前一个元素,和当前暂存的元素比较
       while (j > 0 && array[j - 1] > temp) {
         array[j] = array[j - 1];
         j--;
@@ -188,4 +195,4 @@ function test07() {
   console.log(array);
 }
 
-test04();
+test05();
