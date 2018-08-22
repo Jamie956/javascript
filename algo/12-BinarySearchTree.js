@@ -62,7 +62,7 @@ function BinarySearchTree() {
     }
   };
 
-  // 中序遍历
+  // 中序遍历：左子树 -> 根结点 -> 右子树
   this.inOrderTraverse = function(callback) {
     inOrderTraverseNode(root, callback);
   };
@@ -74,7 +74,7 @@ function BinarySearchTree() {
     }
   };
 
-  // 先序遍历
+  // 前序遍历：根结点 -> 左子树 -> 右子树
   this.preOrderTraverse = function(callback) {
     preOrderTraverseNode(root, callback);
   };
@@ -86,7 +86,7 @@ function BinarySearchTree() {
     }
   };
 
-  // 后序遍历
+  // 后序遍历：左子树 -> 右子树 -> 根结点
   this.postOrderTraverse = function(callback) {
     postOrderTraverseNode(root, callback);
   };
@@ -98,7 +98,7 @@ function BinarySearchTree() {
     }
   };
 
-  // 最小值
+  // 最小值,寻找最左的节点
   this.min = function() {
     return minNode(root);
   };
@@ -112,7 +112,7 @@ function BinarySearchTree() {
     return null;
   };
 
-  // 最大值
+  // 最大值,寻找最右的节点
   this.max = function() {
     return maxNode(root);
   };
@@ -126,46 +126,43 @@ function BinarySearchTree() {
     return null;
   };
 
-  // remove(key) :从树中移除某个键。
+  //根据key移除节点
   this.remove = function(key) {
-    root = removeNode(root, key); //{1}
+    root = removeNode(root, key);
   };
   var removeNode = function(node, key) {
+    //情况一,当前节点不存在
     if (node === null) {
-      //{2}
       return null;
     }
+    //情况二,指定的key小于当前节点的key,用左节点继续递归寻找
     if (key < node.key) {
-      //{3}
-      node.left = removeNode(node.left, key); //{4}
-      return node; //{5}
+      node.left = removeNode(node.left, key);
+      return node;
     } else if (key > node.key) {
-      //{6}
-      node.right = removeNode(node.right, key); //{7}
-      return node; //{8}
+      //情况三,指定的key大于当前节点的key,用右节点继续递归寻找
+      node.right = removeNode(node.right, key);
+      return node;
     } else {
-      //键等于node.key
-      //第一种情况——一个叶节点
+      //情况四,指定的key等于当前节点的key,无左右子节点
       if (node.left === null && node.right === null) {
-        //{9}
-        node = null; //{10}
-        return node; //{11}
+        node = null;
+        return node;
       }
-      //第二种情况——一个只有一个子节点的节点
+      //情况五,指定的key等于当前节点的key,只有右子节点
       if (node.left === null) {
-        //{12}
-        node = node.right; //{13}
-        return node; //{14}
+        node = node.right;
+        return node;
       } else if (node.right === null) {
-        //{15}
-        node = node.left; //{16}
-        return node; //{17}
+        //情况六,指定的key等于当前节点的key,只有左子节点
+        node = node.left;
+        return node;
       }
-      //第三种情况——一个有两个子节点的节点
-      var aux = findMinNode(node.right); //{18}
-      node.key = aux.key; //{19}
-      node.right = removeNode(node.right, aux.key); //{20}
-      return node; //{21}
+      //情况七,指定的key等于当前节点的key,有左右子节点
+      var aux = findMinNode(node.right);
+      node.key = aux.key;
+      node.right = removeNode(node.right, aux.key);
+      return node;
     }
   };
 }
@@ -186,8 +183,28 @@ tree.insert(20);
 tree.insert(18);
 tree.insert(25);
 
-function printNode(value) {
-  //{6}
-  console.log(value);
+function test01() {
+  var items = [];
+  tree.inOrderTraverse(function(value) {
+    items.push(value);
+  });
+  console.log(items);
 }
-tree.inOrderTraverse(printNode); //{7}
+
+function test02() {
+  var items = [];
+  tree.preOrderTraverse(function(value) {
+    items.push(value);
+  });
+  console.log(items);
+}
+
+function test03() {
+  var items = [];
+  tree.postOrderTraverse(function(value) {
+    items.push(value);
+  });
+  console.log(items);
+}
+
+test03();
