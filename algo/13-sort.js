@@ -119,11 +119,13 @@ function test06() {
     if (length === 1) {
       return array;
     }
+    //将数组切分成左叶和右叶
     var mid = Math.floor(length / 2);
     var left = array.slice(0, mid);
     var right = array.slice(mid, length);
     return merge(mergeSortRec(left), mergeSortRec(right));
   };
+  //合并左右叶数组
   var merge = function(left, right) {
     var result = [],
       il = 0,
