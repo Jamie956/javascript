@@ -178,7 +178,9 @@ function test07() {
     }
   }
   function partition(array, left, right) {
+    //获取中间元素
     var pivot = array[Math.floor((right + left) / 2)],
+    //暂存左右索引
       i = left,
       j = right;
     while (i <= j) {
