@@ -130,6 +130,7 @@ function test06() {
     var result = [],
       il = 0,
       ir = 0;
+    //分别从左右叶数组中取出相同或不相同位置的元素,将较小的元素加入新的数组
     while (il < left.length && ir < right.length) {
       if (left[il] < right[ir]) {
         result.push(left[il++]);
@@ -137,6 +138,7 @@ function test06() {
         result.push(right[ir++]);
       }
     }
+    //把左叶或右叶剩下的比较大的元素加入新数组中
     while (il < left.length) {
       result.push(left[il++]);
     }
@@ -153,6 +155,12 @@ function test06() {
 //快速排序
 function test07() {
   var array = [4, 3, 1, 5, 2];
+
+  function swapQuickStort(array, index1, index2) {
+    var aux = array[index1];
+    array[index1] = array[index2];
+    array[index2] = aux;
+  }
 
   function quickSort() {
     quick(array, 0, array.length - 1);
@@ -188,14 +196,9 @@ function test07() {
     }
     return i;
   }
-  function swapQuickStort(array, index1, index2) {
-    var aux = array[index1];
-    array[index1] = array[index2];
-    array[index2] = aux;
-  }
 
   quickSort();
   console.log(array);
 }
 
-test06();
+test07();
