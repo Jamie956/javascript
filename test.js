@@ -57,4 +57,7 @@ function test05() {
   a++;
   console.log("1", a); // -> '1' 1
 }
+
+//proxy (es6)
+
 test05();

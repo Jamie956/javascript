@@ -98,3 +98,18 @@ define(function(require, exports, module) {
 })
 
 ```
+
+```
+Promise belongs to microtask and setTimeout belongs to macrotask
+
+Microtasks include process.nextTick, promise, Object.observe and MutationObserver
+
+Macrotasks include script, setTimeout, setInterval, setImmediate, I/O and UI rendering
+
+So the correct sequence of an event loop looks like this:
+1.Execute synchronous codes, which belongs to macrotask
+2.Once call stack is empty, query if any microtasks need to be executed
+3.Execute all the microtasks
+4.If necessary, render the UI
+5.Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask
+```
