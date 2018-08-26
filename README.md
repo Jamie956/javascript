@@ -112,4 +112,12 @@ So the correct sequence of an event loop looks like this:
 3.Execute all the microtasks
 4.If necessary, render the UI
 5.Then start the next round of the Event loop, and execute the asynchronous operations in the macrotask
+
+===MVVM===
+In the JQuery period, if you need to refresh the UI, you need to get the corresponding DOM and then update the UI, so the data and business logic are strongly-coupled with the page.
+
+In MVVM, the UI is driven by data. Once the data is changed, the corresponding UI will be refreshed. If the UI changes, the corresponding data will also be changed. In this way, we can only care about the data flow in business processing without dealing with the page directly. ViewModel only cares about the processing of data and business and does not care how View handles data. In this case, we can separate the View from the Model. If either party changes, it does not necessarily need to change the other party, and some reusable logic can be placed in a ViewModel, allowing multiple Views to reuse this ViewModel.
+
+In MVVM, the core is the two-way binding of data, such as dirty checking by Angular and data hijacking in Vue.
+
 ```
