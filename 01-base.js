@@ -1,56 +1,29 @@
-//直接执行参数函数
+//continue
 function test01() {
-  function foo(cb) {
-    cb();
+  var str = "";
+  for (var i = 0; i < 5; i++) {
+    if (i === 1) {
+      continue;
+    }
+    str += i;
   }
-  foo(() => {
-    console.log("foo callback");
-  });
+  console.log(str);
 }
 
-//call执行参数函数
+//break
 function test02() {
-  function bar(cb) {
-    cb.call(this);
+  var str = "";
+  for (var i = 0; i < 5; i++) {
+    if (i === 1) {
+      break;
+    }
+    str += i;
   }
-  bar(() => {
-    console.log("bar callback");
-  });
+  console.log(str);
 }
-
-//apply劫持
-function test03() {
-  function Person(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-  function Student(name, age, grade) {
-    //劫持另外一个对象的方法，继承另外一个对象的属性
-    Person.apply(this, arguments);
-    this.grade = grade;
-  }
-  var student = new Student("jamie", 18, "one");
-  console.log(student);
-}
-
-//call调用实例
-function test04() {
-  function Person(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-  function Student(name, age, grade) {
-    Person.call(this, name, age);
-    this.grade = grade;
-  }
-  var student = new Student("jamie", 18, "one");
-  console.log(student);
-}
-
-//===obj===
 
 //prototype
-function test06() {
+function test03() {
   function Person() {}
   Person.prototype.name = "no name";
   Person.prototype.print = function() {
@@ -62,7 +35,7 @@ function test06() {
 }
 
 //函数实例
-function test07() {
+function test04() {
   function Person() {
     this.name = "";
     this.age = "";
@@ -80,52 +53,23 @@ function test07() {
   console.log(rs);
 }
 
-//停止当前循环，进入下一个循环
-function test08() {
-  var str = "";
-  loop1: for (var i = 0; i < 5; i++) {
-    if (i === 1) {
-      continue loop1;
-    }
-    str += i;
-  }
-  console.log(str);
-}
-
-//throw error
-function test09() {
-  function factorial(x) {
-    if (x < 0) throw new Error("x must not be negative");
-    for (var f = 1; x > 1; f *= x, x--);
-    return f;
-  }
-  factorial(-1);
-  factorial(4);
-}
-
 //catch error
-function test10() {
-  function factorial(x) {
-    if (x < 0) throw new Error("x must not be negative");
-    for (var f = 1; x > 1; f *= x, x-- /* empty */);
-    return f;
-  }
+function test05() {
   try {
-    var f = factorial(-1);
-    console.log(f);
+    throw new Error("Oops");
   } catch (e) {
     console.log(e);
   }
 }
 
 //获取随机数
-function test11() {
+function test06() {
   var rs = Math.random();
   console.log(rs);
 }
 
 //生成n位随机数
-function test12() {
+function test07() {
   let getRandom = n =>
     Math.random()
       .toString()
@@ -135,7 +79,7 @@ function test12() {
 }
 
 //生成n-m之间的随机数
-function test13() {
+function test08() {
   let randomNum = (n, m) => Math.floor(Math.random() * (m - n) + n);
   //以值小的n为基准，加上两数差的绝对值乘以0-1之间的随机数，取值区间为[n+|n-m|*0, n+|n-m|*1]，地板取整
   var rs = randomNum(2, 10);
@@ -143,7 +87,7 @@ function test13() {
 }
 
 //短路运算符
-function test14() {
+function test09() {
   var rs;
   rs = "" && "1"; //第一个false就返回第一个
   console.log(rs);
@@ -152,7 +96,7 @@ function test14() {
 }
 
 //惰性载入函数
-function test15() {
+function test10() {
   function foo() {
     if (true) {
       foo = function() {
@@ -169,7 +113,7 @@ function test15() {
 }
 
 //一次性函数
-function test16() {
+function test11() {
   function sca() {
     console.log("msg");
     sca = function() {
@@ -181,7 +125,7 @@ function test16() {
 }
 
 //通用表单校验
-function test17() {
+function test12() {
   const schema = {
     first: {
       required: true
@@ -192,8 +136,11 @@ function test17() {
   };
 
   const validate = (schema, values) => {
+    //遍历schema
     for (field in schema) {
+      //找出schema中为true的字段
       if (schema[field].required) {
+        //判断改字段是否存在
         if (!values[field]) {
           return false;
         }
@@ -205,4 +152,4 @@ function test17() {
   console.log(validate(schema, { first: "Bruce", last: "Wayne" })); // true
 }
 
-test13();
+test02();
