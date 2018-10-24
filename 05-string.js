@@ -1,5 +1,5 @@
 
-//字符串长度
+//长度
 str.length;
 //根据索引获取字符
 str.charAt(0);
@@ -17,7 +17,7 @@ str.includes('wo');
 str.indexOf("d");
 //获取给定字符最后的索引
 str.lastIndexOf("o");
-//重复字符串
+//输出重复字符串
 str.repeat(3);
 //替换字符串中指定字符
 str.replace("world", "google");
