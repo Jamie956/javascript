@@ -55,49 +55,6 @@ Whenever there are events to run, the event loop runs until the queue is empty. 
 
 ```
 
-###  Modularization
-
-#### es6
-```js
-// file a.js
-export function a() {}
-export function b() {}
-// file b.js
-export default function() {}
-
-import {a, b} from './a.js'
-import XXX from './b.js'
-```
-
-####  CommonJS
-```js
-// a.js
-module.exports = {
-    a: 1
-}
-// or
-exports.a = 1
-
-// b.js
-var module = require('./a.js')
-module.a // -> log 1
-```
-
-#### AMD
-```js
-// AMD
-define(['./a', './b'], function(a, b) {
-    a.do()
-    b.do()
-})
-define(function(require, exports, module) {
-    var a = require('./a')  
-    a.doSomething()   
-    var b = require('./b')
-    b.doSomething()
-})
-
-```
 
 ```
 Promise belongs to microtask and setTimeout belongs to macrotask
