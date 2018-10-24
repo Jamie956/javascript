@@ -1,7 +1,7 @@
 //指定位置添加数组元素
 function test01() {
   var arr = ["a", "b", "c", "d"];
-  arr.splice(2, 0, "x");
+  arr.splice(2, 0, "x");//位置，长度，元素
   console.log(arr);
 }
 
@@ -22,13 +22,13 @@ function test03() {
 //增删元素
 function test04() {
   var arr = ["a", "b", "c", "d"];
-  arr.unshift("x"); //首位插入元素
+  arr.unshift("x"); //首位插入
   console.log(arr);
-  arr.push("e"); //末尾插入元素
+  arr.shift(); //首位移除
   console.log(arr);
-  arr.shift(); //移除数组首位元素
+  arr.push("y"); //末尾插入
   console.log(arr);
-  arr.pop(); //移除数组末尾元素
+  arr.pop(); //末尾移除
   console.log(arr);
 }
 
@@ -94,4 +94,4 @@ function test14() {
   arr.join(" - ");
 }
 
-test08();
+test04();

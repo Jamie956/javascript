@@ -1,39 +1,31 @@
-//根据key获取json某个元素
 function test08() {
   var json = { name: "tom", age: 18 };
-  var rs = json.name;
-  console.log(rs);
-  rs = json["name"];
-  console.log(rs);
+  //获取
+  json.name;
+  json["name"];
 }
 
-//string与json转换
 function test09() {
-  //json转字符串
+  //json -> str
   var rs = JSON.stringify({ name: "tom", age: 18 });
   console.log(rs);
-  //字符串转json
+  //str -> json
   rs = JSON.parse('{ "name": "tom", "age": 18 }');
   console.log(rs);
 }
 
-//根据key添加或更新元素
 function test10() {
   var json = { name: "tom", age: 18 };
-  //往json添加新元素
+  //添加
   json["sex"] = "man";
-  console.log(json);
-  //更新json指定元素
+  //更新
   json["age"] = 19;
-  console.log(json);
 }
 
-//根据key删除json里的某个元素
 function test11() {
   var json = { name: "tom", age: 18 };
-
+  //删除
   delete json["age"];
-  console.log(json);
 }
 
 //遍历json，把json的key赋值给定义变量key
