@@ -1,0 +1,14 @@
+<script>
+  var x = 0;
+  var obj = {
+    x: 1,
+    y: function foo() {
+      console.log(this.x);
+    }
+  };
+
+  //apply使this默认指向全局对象
+  obj.y.apply(); // 0
+  //apply使this指向obj对象
+  obj.y.apply(obj); //1
+</script>
