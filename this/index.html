@@ -1,8 +1,46 @@
 <script>
-  var x = 1; //window全局变量
-  function foo() {
-    //this是全局对象
-    console.log(this.x);
+  function test01() {
+    var x = 1; //window全局变量
+    function foo() {
+      //this是全局对象
+      console.log(this.x);
+    }
+    foo(); // 1
   }
-  foo(); // 1
+
+  function test02() {
+    var x = 10;
+    var obj = {
+      x: 20,
+      f: function () {
+        console.log(this.x);
+        var that = this;
+        //使用that保留当前函数执行上下文的this
+        var foo = function () {
+          console.log(that.x);
+        };
+        //此时foo函数中的this仍然指向window，但我们使用that取得obj
+        foo(); // foo.call(window)
+      }
+    };
+    obj.f();// obj.f.call(obj);
+  }
+
+  var x = 10;
+  function test03() {
+    var obj = {
+      x: 20,
+      f: function () {
+        console.log(this.x);
+      }
+    };
+    obj.f();// obj.f.call(obj) // 20 
+    var fOut = obj.f;
+    // this在执行时才会被确认
+    fOut();// fOut.call(window) // 10 
+    var obj2 = { x: 30, f: obj.f };
+    obj2.f(); // obj2.f.call(obj2) // 30
+  }
+
+  test03();
 </script>

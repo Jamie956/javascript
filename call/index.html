@@ -1,9 +1,24 @@
 <script>
-  function say(hi) {
-    console.log(hi);
+  function test01() {
+    function say(hi) {
+      console.log(hi);
+    }
+    say("Hello world");//say.call(window, "Hello world");
   }
-  //语法糖
-  say("Hello world");
-  //常用调用函数就是把this指向window或上一级对象
-  say.call(window, "Hello world"); 
+
+  function test02() {
+    function hello(thing) {
+      console.log(this + " says hello " + thing);
+    }
+    person = {
+      name: "caibirdme",
+      hello: hello
+    };
+
+    person.hello("world");//person.hello.call(person, "world");
+
+    hello("world");//hello.call(window, "world");
+  }
+
+  test02();
 </script>

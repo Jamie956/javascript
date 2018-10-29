@@ -6,15 +6,22 @@ function test01() {
 }
 
 function test02() {
-  var person = {
-    name: "caibirdme",
-    run: function(time) {
-      console.log(this.name + "has been running for over " + time + " minutes");
-    }
-  };
-  person.run(30);
-  // 等价于
-  person.run.call(person, 30);
+  function person(name) {
+    this.name = name;
+  }
+  var foo = new person("deen"); //new 语法糖
+  console.log(foo);
+  //等价于
+  var bar = (function(name) {
+    var _newObj = {
+      constructor: person,
+      __proto__: person.prototype
+    };
+    _newObj.constructor(name);
+    _newObj.constructor.call(_newObj, name);
+    return _newObj;
+  })("deer");
+  console.log(bar);
 }
 
 test02();
