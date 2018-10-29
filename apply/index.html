@@ -7,8 +7,8 @@
     }
   };
 
-  //apply使this默认指向全局对象
+  //this -> window
   obj.y.apply(); // 0
-  //apply使this指向obj对象
+  //this -> obj
   obj.y.apply(obj); //1
 </script>

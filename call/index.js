@@ -24,4 +24,22 @@ function test02() {
   console.log(bar);
 }
 
+function test03() {
+  var s1 = { color: "blue" };
+  function print() {
+    console.log(this.color);
+  }
+  //this -> s1
+  print.call(s1);
+}
+
+function test04() {
+  var s1 = { color: "blue" };
+  function print(name) {
+    console.log(name + " " + this.color);
+  }
+  //this -> s1
+  print.call(s1, "Tom");
+}
+
 test02();
