@@ -1,0 +1,9 @@
+<script>
+  function say(hi) {
+    console.log(hi);
+  }
+  //语法糖
+  say("Hello world");
+  //常用调用函数就是把this指向window或上一级对象
+  say.call(window, "Hello world"); 
+</script>
