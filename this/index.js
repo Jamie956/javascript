@@ -71,4 +71,14 @@ function test05() {
   console.log(sum(9)); // 8,9,5
 }
 
-test05();
+function test06() {
+  const user = {
+    name: "Tyler",
+    greet() {
+      console.log(this.name);
+    }
+  };
+  user.greet();
+}
+
+test06();
