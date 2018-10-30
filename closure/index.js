@@ -109,4 +109,42 @@ function test05() {
   console.log(Counter2.value()); /* logs 0 */
 }
 
-test05();
+function test06() {
+  function count() {
+    var arr = [];
+    //i的值是共享的
+    for (var i = 1; i <= 3; i++) {
+      arr.push(function() {
+        return i * i; //1, 4, 16
+      });
+    }
+    //arr [fn,fn,fn]
+    return arr;
+  }
+
+  var results = count();
+  var f1 = results[0];
+  var f2 = results[1];
+  var f3 = results[2];
+
+  console.log(f1()); //16
+  console.log(f2()); //16
+  console.log(f3()); //16
+}
+
+function test07() {
+  "use strict";
+
+  function make_pow(n) {
+    return function(x) {
+      return Math.pow(x, n);
+    };
+  }
+  var pow2 = make_pow(2);
+  var pow3 = make_pow(3);
+
+  console.log(pow2(5)); // 25
+  console.log(pow3(7)); // 343
+}
+
+test07();
