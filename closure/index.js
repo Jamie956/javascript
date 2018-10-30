@@ -1,5 +1,4 @@
 // 闭包是能够读取其他函数内部变量的函数
-
 function test01() {
   function f1() {
     var j = 4;
@@ -34,4 +33,80 @@ function test02() {
   print(); // 1000
 }
 
-test02();
+function test03() {
+  function makeAdder(x) {
+    return function(y) {
+      return x + y;
+    };
+  }
+
+  var add5 = makeAdder(5);
+  var add10 = makeAdder(10);
+
+  console.log(add5(2)); // 7
+  console.log(add10(2)); // 12
+}
+
+function test04() {
+  //立即执行的匿名函数
+  var Counter = (function() {
+    //私有变量
+    var privateCounter = 0;
+    //私有函数
+    function changeBy(val) {
+      privateCounter += val;
+    }
+    //返回三个公共函数，共享同一个环境的闭包，提供访问私有属性，
+    return {
+      increment: function() {
+        changeBy(1);
+      },
+      decrement: function() {
+        changeBy(-1);
+      },
+      value: function() {
+        return privateCounter;
+      }
+    };
+  })();
+
+  console.log(Counter.value()); /* logs 0 */
+  Counter.increment();
+  Counter.increment();
+  console.log(Counter.value()); /* logs 2 */
+  Counter.decrement();
+  console.log(Counter.value()); /* logs 1 */
+}
+
+function test05() {
+  var makeCounter = function() {
+    var privateCounter = 0;
+    function changeBy(val) {
+      privateCounter += val;
+    }
+    return {
+      increment: function() {
+        changeBy(1);
+      },
+      decrement: function() {
+        changeBy(-1);
+      },
+      value: function() {
+        return privateCounter;
+      }
+    };
+  };
+
+  // counter1 和 counter2 各自独立
+  var Counter1 = makeCounter();
+  var Counter2 = makeCounter();
+  console.log(Counter1.value()); /* logs 0 */
+  Counter1.increment();
+  Counter1.increment();
+  console.log(Counter1.value()); /* logs 2 */
+  Counter1.decrement();
+  console.log(Counter1.value()); /* logs 1 */
+  console.log(Counter2.value()); /* logs 0 */
+}
+
+test05();
