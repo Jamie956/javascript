@@ -45,6 +45,10 @@ function test03() {
 
   console.log(add5(2)); // 7
   console.log(add10(2)); // 12
+
+  // 释放对闭包的引用
+  add5 = null;
+  add10 = null;
 }
 
 function test04() {
@@ -147,4 +151,48 @@ function test07() {
   console.log(pow3(7)); // 343
 }
 
-test07();
+function test08() {
+  // 匿名函数最大的用途是创建闭包，并且还可以构建命名空间，以减少全局变量的使用。从而使用闭包模块化代码，减少全局变量的污染。
+  var singleton = (function() {
+    // 私有变量
+    var age = 22;
+    var speak = function() {
+      console.log("speaking!!!");
+    };
+
+    // 公有属性和方法
+    return {
+      name: "percy",
+      getAge: function() {
+        return age;
+      }
+    };
+  })();
+  console.log(singleton.name);
+}
+
+function test09() {
+  function fun(n, o) {
+    console.log(o);
+    return {
+      fun: function(m) {
+        return fun(m, n);
+      }
+    };
+  }
+
+  var a = fun(0); // undefined
+  a.fun(1); // 0
+  a.fun(2); // 0
+  a.fun(3); // 0
+
+  var b = fun(0)
+    .fun(1)
+    .fun(2)
+    .fun(3); //undefined 0 1 2
+  var c = fun(0).fun(1); // undefined 0
+  c.fun(2); // 1
+  c.fun(3); // 1
+}
+
+test09();
