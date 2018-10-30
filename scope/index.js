@@ -56,4 +56,13 @@ function test04() {
   foo();
 }
 
-test04();
+function test05() {
+  function foo() {
+    //变量没有var定义时，就当做全局变量
+    n = 233;
+  }
+  foo();
+  console.log(n);
+}
+
+test05();
