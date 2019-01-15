@@ -12,16 +12,6 @@ function test01() {
   var p = new Point(2, 3);
   p.print();
 }
-//===匿名class===
-function test02() {
-  let person = new class {
-    constructor() {}
-    print() {
-      console.log("class no name");
-    }
-  }();
-  person.print();
-}
 
 //===绑定函数===
 function test03() {
