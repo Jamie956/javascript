@@ -1,8 +1,7 @@
 function test01() {
   class Point {
     constructor(x, y) {
-      // this 实例对象
-      this.x = x; //x实例的属性
+      this.x = x;
       this.y = y;
     }
     print() {
@@ -13,25 +12,23 @@ function test01() {
   p.print();
 }
 
-//===绑定函数===
-function test03() {
+function test02() {
   class Person {
     constructor() {
-      this.name = "tom";
-      //函数的this与实例的this进行绑定
+      //bind使绑定的函数在改变作用域操作时仍然指向Person的this
       this.print = this.print.bind(this);
     }
     print() {
-      console.log(this.name);
+      console.log(this);
     }
   }
   const p = new Person();
-  const { print } = p;
+  var print = p.print;//this -> window (if no bind)
   print();
 }
 
 //===set & get===
-function test04() {
+function test03() {
   class Person {
     constructor() {
       this.name;
@@ -56,8 +53,7 @@ function test04() {
   console.log(p.prop);
 }
 
-//===继承====
-function test05() {
+function test04() {
   class Father {
     constructor(x) {
       this.x = x;
@@ -73,7 +69,7 @@ function test05() {
       this.y = y;
     }
     //调用父函数
-    toFatherPrint() {
+    invokeFatherPrint() {
       return this.fatherPrint();
     }
     //调用父属性x
@@ -83,9 +79,9 @@ function test05() {
   }
 
   const s = new Son("x1", "y1");
-  s.toFatherPrint();
+  s.invokeFatherPrint();
   s.sonPrint();
   s.fatherPrint(); //直接调用父类方法
 }
 
-test05();
+test04();
