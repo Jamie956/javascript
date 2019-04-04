@@ -7,5 +7,5 @@
 setInterval(() => {
   setTimeout(() => {
     console.log("Execute after 10s " + new Date);
-  }, 1000);
-}, 1000);
+  }, 4000);
+}, 2000);
