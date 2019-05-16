@@ -21,4 +21,7 @@ function test02() {
   obj.innerobj.f(); //30
 }
 
-test02();
+
+
+
+test03();
