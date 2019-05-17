@@ -1,59 +1,37 @@
 <script>
-  var x = 10;
-
   function test01() {
-    function foo() {
-      console.log(this.x); // this -> window
-    }
-    foo(); // 10
+    //this指向上一級
+    console.log(this); // this -> window
   }
 
   function test02() {
     var obj = {
-      x: 20,
-      f: function() {
-        console.log(this.x); // this -> obj //20
-        var that = this; //that -> this -> obj
-        var foo = function() {
-          console.log(that.x); // 20
-          console.log(this.x); // this -> window //10
-        };
-        foo();
+      a: function() {
+        console.log(this);
       }
     };
-    obj.f();
+
+    //調用對象內的函數，this指向上一級
+    obj.a(); //this -> obj
+
+    //函數重新賦值，脫離對象
+    var vartofun = obj.a;
+    vartofun(); // this -> window
   }
 
   function test03() {
     var obj = {
-      x: 20,
-      f: function() {
-        console.log(this.x); //this -> obj
-      }
-    };
-    obj.f(); // 20
-    var fOut = obj.f;
-    fOut(); // this -> window 10
-    var obj2 = { x: 30, f: obj.f };
-    obj2.f(); // this -> obj2 30
-  }
-
-  function test04() {
-    var obj = {
-      foo: function() {
+      a: function() {
         setTimeout(function() {
           console.log(this); //this -> window
         }, 1000);
-      },
-      bar: function() {
         setTimeout(() => {
           console.log(this); //this -> obj
         }, 2000);
       },
     };
-    obj.foo();
-    obj.bar();
+    obj.a();
   }
 
-  test01();
+  test03();
 </script>
