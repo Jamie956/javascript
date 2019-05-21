@@ -1,26 +1,19 @@
 function test01() {
-  function say(content) {
-    console.log("From " + this + ": Hello " + content);
+  var user = { name: "tom" };
+  function greet() {
+    console.log(this.name);
   }
-  say.call("Bob", "World"); //From Bob: Hello World
+  //greet.this -> user
+  greet.call(user);
 }
 
 function test02() {
-  var s1 = { color: "blue" };
-  function print() {
-    console.log(this.color);
+  var user = { name: "tom" };
+  function greet(word) {
+    console.log(this.name + " " + word);
   }
-  //this -> s1
-  print.call(s1);
-}
-
-function test03() {
-  var s1 = { color: "blue" };
-  function print(name) {
-    console.log(name + " " + this.color);
-  }
-  //this -> s1
-  print.call(s1, "Tom");
+  //greet.this -> user
+  greet.call(user, "say hi");
 }
 
 test02();

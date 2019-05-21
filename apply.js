@@ -1,31 +1,19 @@
 function test01() {
-  var s1 = { color: "blue" };
-  function print() {
-    console.log(this.color);
+  var user = { name: "tom" };
+  function greet() {
+    console.log(this.name);
   }
-  //this -> s1
-  print.apply(s1);
+  //greet.this -> user
+  greet.apply(user);
 }
 
 function test02() {
-  var s1 = { color: "blue" };
-  function print(name) {
-    console.log(name + " " + this.color);
+  var user = { name: "tom" };
+  function greet(word) {
+    console.log(this.name + " " + word);
   }
-  //this -> s1
-  print.apply(s1, ["Tom"]);
+  //greet.this -> user
+  greet.apply(user, ["say hi"]);
 }
 
-function test03() {
-  function Animal(name) {
-    this.name = name;
-  }
-  function Dog(name) {
-    //Animal this -> this
-    Animal.apply(this, arguments);
-    console.log(this.name);
-  }
-  new Dog("Tom");
-}
-
-test03();
+test02();
