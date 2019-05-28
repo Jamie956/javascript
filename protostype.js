@@ -7,7 +7,7 @@ function test1() {
   user.prototype.age = 28;
   user.prototype.address = "GZ";
 
-  let u = new user(); // {a: 1, b: 2}
+  let u = new user();
   // {name: 'tom', age: 18} -> {age: 28, address: 'GZ'} -> Object.prototype -> null
   console.log(u.name); // tom
   console.log(u.age); // 18
