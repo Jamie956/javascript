@@ -10,6 +10,7 @@ function test1() {
 }
 
 //by reference
+//d->c=Hello->Halo
 function test2() {
   var c = { greeting: "Hello" };
   var d;
