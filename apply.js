@@ -1,19 +1,7 @@
-function test01() {
-  var user = { name: "tom" };
-  function greet() {
-    console.log(this.name);
-  }
-  //greet.this -> user
-  greet.apply(user);
+function test03(){
+  (function(){console.log(this)}).apply({name: 'tom'});//this -> {name: 'tom'}
+  (function(arg){console.log(arg)}).apply({name: 'tom'}, ['info']);
 }
+test03();
 
-function test02() {
-  var user = { name: "tom" };
-  function greet(word) {
-    console.log(this.name + " " + word);
-  }
-  //greet.this -> user
-  greet.apply(user, ["say hi"]);
-}
 
-test02();
