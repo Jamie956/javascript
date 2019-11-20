@@ -1,71 +1,69 @@
-function timer(content, time) {
-  console.log("start " + content);
+function timer(name, time) {
+  console.log("goto: " + name);
   return new Promise(resolve => {
     setTimeout(() => {
-      console.log(content + " resolve");
-      resolve(content);
+      console.log(name + " resolve");
+      resolve(name);
     }, time);
   });
 }
 
 function t1() {
   console.log("start");
-  var a = timer("a", 2000);
-  console.log(a);
-  /*
-  start
-  start a
-  Promise { <pending> }
-  a resolve
-  */
+  let rs = timer("myTimer", 2000);
+  console.log('return: ' + rs);
 }
 
 // only async
 async function t2() {
   console.log("start");
-  var a = timer("a", 2000);
-  console.log(a);
-  /*
-  start
-  start a
-  Promise { <pending> }
-  a resolve
-  */
+  let rs = timer("myTimer", 2000);
+  console.log('return: ' + rs);
+
+}
+
+// async await
+async function t2a() {
+  console.log("start");
+  let rs = await timer("myTimer", 2000);
+  console.log('return: ' + rs);
+
 }
 
 // async & await function
 async function t3() {
   console.log("start");
-  var a = await timer("a", 1000);
-  var b = await timer("b", 2000);
-  console.log(a);
-  console.log(b);
+  let rs = await timer("timerA", 1000);
+  let rs1 = await timer("timerB", 2000);
+  console.log('return: ' + rs);
+  console.log('return: ' + rs1);
+
   /*
   start
-  start a
-  a resolve
-  start b
-  b resolve
-  a
-  b
+  goto: timerA
+  timerA resolve
+  goto: timerB
+  timerB resolve
+  return: timerA
+  return: timerB
   */
 }
 
 // async & await value
 async function t4() {
   console.log("start");
-  var a = timer("a", 2000);
-  var b = timer("b", 1000);
-  console.log(await a);
-  console.log(await b);
+  let rs = timer("timerA", 2000);
+  let rs1 = timer("timerB", 1000);
+  console.log(await rs);// wait
+  console.log(await rs1);
   /*
   start
-  start a
-  start b
-  b resolve
-  a resolve
-  a
-  b
+  goto: timerA
+  goto: timerB
+  timerB resolve
+  timerA resolve
+  timerA
+  timerB
   */
 }
 
