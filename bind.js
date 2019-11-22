@@ -1,9 +1,2 @@
-const user = { name: "tom" };
-
-function greet() {
-  console.log(this.name);
-}
-
-// greet.this -> user
-const greetting = greet.bind(user);
+const greetting = ( function(){console.log(this.name);} ).bind( {name: 'tom'} );
 greetting();

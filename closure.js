@@ -1,17 +1,16 @@
 // 读取函数内部变量
 // 返回函数
-function test01() {
-  function f1() {
+function t1() {
+  let clo = (function() {
     var j = 4;
-    return function f2() {
+    return function() {
       console.log(j);
     };
-  }
-  var result = f1();
-  result();
+  })();
+  clo();
 }
 
-function test02() {
+function t2() {
   //立即执行的匿名函数
   var Counter = (function() {
     var privateCounter = 0;
@@ -33,4 +32,4 @@ function test02() {
   console.log(Counter.value()); //1
 }
 
-test01();
+t1();

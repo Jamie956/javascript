@@ -1,4 +1,4 @@
-function test01() {
+function t1() {
   class Greeting {
     constructor(word) {
       this.word = word;
@@ -11,49 +11,37 @@ function test01() {
   greet.say();
 }
 
-function test02() {
+function t2() {
   class Greeting {
     constructor() {
-      this.x = 1;
-      // say.this -> Person.this
       this.say = this.say.bind(this);
     }
     say() {
-      console.log(this.x);
+      console.log(this);
     }
   }
   const greet = new Greeting();
   var say = greet.say;
-  say();
+  say();// this is current this if no bind
 }
 
-function test03() {
+function t3() {
   class Father {
     constructor(x) {
       this.x = x;
     }
-    fatherSay() {
-      console.log(this.x);
-    }
   }
-
   class Son extends Father {
     constructor(x, y) {
       super(x);
       this.y = y;
     }
-    invokeFather() {
-      return this.fatherSay();
-    }
-    sonSay() {
-      console.log(this.x + this.y);
+    say(){
+      console.log(this);
     }
   }
-
-  const s = new Son("1", "2");
-  s.sonSay();
-  s.invokeFather();
-  s.fatherSay();
+  const son = new Son(1, 2);
+  son.say();
 }
 
-test03();
+t3();
