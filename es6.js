@@ -83,12 +83,3 @@ dest.baz === 4;
 arr.find(x => x > 3); // 数组元素遍历
 arr.findIndex(x => x > 3); // 数组索引遍历
 
-//proxy
-let target = { foo: "Welcome, foo" };
-let proxy = new Proxy(target, {
-  get(receiver, name) {
-    return name in receiver ? receiver[name] : `Hello, ${name}`;
-  }
-});
-proxy.foo === "Welcome, foo";
-proxy.world === "Hello, world";
