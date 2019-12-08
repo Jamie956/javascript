@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/data_struct/loop_queue_pro.js"
+      "program": "${workspaceFolder}/algo_good_for_you/numIslans_bfs.js"
     }
   ]
 }
