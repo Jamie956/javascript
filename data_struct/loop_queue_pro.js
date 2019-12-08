@@ -1,4 +1,46 @@
 /**
+ * Pseudocode
+ * 
+ * construct(){
+ *  queue is array
+ *  head pointer init -1
+ *  tail pointer init -1
+ * }
+ * 
+ * enqueue(value){
+ *  queue must not full
+ *  head = 0 if queue empty
+ *  tail next pointer to (tail+1)%size
+ *  store value to queue
+ * }
+ * 
+ * dequeue(){
+ *  queue must not empty
+ *  init head and tail if value is the last
+ *  head next pointer to (head+1)%size
+ * }
+ * 
+ * front(){
+ *  queue must not empty
+ *  queue[head]
+ * }
+ * 
+ * rear(){
+ *  queue must not empty
+ *  queue[tail]
+ * }
+ * 
+ * isEmpty(){
+ *  head == -1
+ * }
+ * 
+ * isFull(){
+ *  tail next pointer == head
+ * }
+ */
+
+
+/**
  * Initialize your data structure here. Set the size of the queue to be k.
  * @param {number} k
  */
