@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/algo_good_for_you/numIslans_bfs.js"
+      "program": "${workspaceFolder}/algo_good_for_you/openLock.js"
     }
   ]
 }
