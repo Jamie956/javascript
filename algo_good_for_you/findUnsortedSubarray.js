@@ -5,7 +5,8 @@ Explanation:
 [6, 4, 8, 10, 9]
 
 foreach nums
-  if nums[i] > nums[i+1], left edge find min, right edge find max
+  if end nums[length - 1 - i] > left min num, l edge = end num index, else end nums[length - 1 - i] is min
+  if right max num > start nums[i], r edge = start num index, else start nums[i] is max
 if r>l, length = r - l +1  
 */
 
