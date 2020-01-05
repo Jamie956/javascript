@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/algo_good_for_you/findDisappearedNumbers.js"
+      "program": "${workspaceFolder}/algo_good_for_you/findUnsortedSubarray.js"
     }
   ]
 }
